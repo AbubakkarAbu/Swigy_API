@@ -7,7 +7,7 @@ const app = express()
 app.use(body.json())
 app.use(cors())
 app.get("/",(req,res)=>{
-    console.log("Welcome to ABU Website")
+    res.send("Welcome to ABU Website")
 })
 async function connectDb(){
     try{
