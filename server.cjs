@@ -6,6 +6,9 @@ const {Restaurant, User} = require('./schema.cjs')
 const app = express()
 app.use(body.json())
 app.use(cors())
+app.get("/",(req,res)=>{
+    console.log("Welcome to ABU Website")
+})
 async function connectDb(){
     try{
         await mongo.connect('mongodb+srv://ABUBAKKAR:Abhu123@cluster0.2y5nd8j.mongodb.net/Restarunt_Details?retryWrites=true&w=majority')
