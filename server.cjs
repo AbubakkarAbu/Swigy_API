@@ -1,15 +1,16 @@
 const express = require ('express')
 const body = require("body-parser")
 const mongo = require("mongoose")
-
+const cors = require("cors")
 const {Restaurant, User} = require('./schema.cjs')
 const app = express()
 app.use(body.json())
+app.use(cors())
 async function connectDb(){
     try{
         await mongo.connect('mongodb+srv://ABUBAKKAR:Abhu123@cluster0.2y5nd8j.mongodb.net/Restarunt_Details?retryWrites=true&w=majority')
 
-        const port =2222
+        const port =process.env.PORT||2222
         app.listen(port,()=>{
             console.log(`I am Listening at ${port}`)
         })
