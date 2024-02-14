@@ -94,16 +94,41 @@ app.post('/find-restarunt',async(req,res)=>{
         })
     }
 })
-app.post('/remove-restaurant',async(req,res)=>{
+// app.post('/remove-restaurant',async(req,res)=>{
+//     try{
+//         await Restaurant.deleteOne({
+//             "name":req.body.resname,
+//             "areaName":req.body.areaName
+//         })
+//         res.status(201).json({
+//             "status":"Deletion Complted",
+//             "msg":"done"
+//         })
+//     }
+//     catch(error){
+//         res.status(500).json({
+//             "Status":"Not Deleted",
+//             "msg" : error
+//         })
+//     }
+// })
+app.post('/remove-restaurant/:id',async(req,res)=>{
     try{
-        await Restaurant.deleteOne({
-            "name":req.body.resname,
-            "areaName":req.body.areaName
-        })
-        res.status(201).json({
-            "status":"Deletion Complted",
-            "msg":"done"
-        })
+        const rest = await Restaurant.findByIdAndDelete(res.params.id)
+        if(rest)
+        {
+            res.status(201).json({
+                "status":"Deletion Complted",
+                "msg":"done"
+            })
+         }
+         else
+         {
+                res.status(404).json({
+                "status":"Not Deleted",
+                "msg":"file not found"
+            })
+         }
     }
     catch(error){
         res.status(500).json({
