@@ -32,7 +32,8 @@ app.post('/add-restaurant',async(req,res)=>{
             "costForTwo":req.body.costForTwo,
             "avgRating":req.body.avgRating,
             "cuisines":req.body.cuisines,
-            "areaName":req.body.areaName
+            "areaName":req.body.areaName,
+            "imageLink":req.body.imageLink
         })
         res.status(201).json({
             "status":"Complted",

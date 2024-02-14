@@ -17,6 +17,9 @@ const RestaruntDetailes = new mongo.Schema({
     },
     cuisines:{
         type:Array
+    },
+    imageLink:{
+        type:String
     }
 },{versionKey:false})
 const Restaurant = mongo.model("Restarunt_Detaile",RestaruntDetailes)
